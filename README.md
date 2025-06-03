@@ -1,2 +1,10 @@
-# TesteTecnicoAutomacaoPerformance
-Repositório criado para subida do teste técnico realizado pelo cancidato
+# Teste técnico
+
+# TR
+
+Os scripts para criação de dados estão na pasta ./postman
+
+
+\#boaSorte
+
+

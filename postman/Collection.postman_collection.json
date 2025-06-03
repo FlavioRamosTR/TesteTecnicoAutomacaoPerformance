@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "614d6e40-50a9-4825-be0a-bb94f5d99131",
+		"name": "Collection",
+		"description": "Collection para interações basicas com a API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45552153",
+		"_collection_link": "https://flavio-1431815.postman.co/workspace/Flavio's-Workspace~fdd2359c-f576-488f-8d3f-120f2696940b/collection/45552153-614d6e40-50a9-4825-be0a-bb94f5d99131?action=share&source=collection_link&creator=45552153"
+	},
+	"item": [
+		{
+			"name": "1 - Create a user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"name\": \"{{name}}\",\r\n    \"document\": \"{{document}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST \"http://localhost:5000/user\" -H  \"accept: application/json\" -H  \"Content-Type: application/json\" -d \"{  \\\"email\\\": \\\"Flavio\\\",  \\\"name\\\": \\\"teste\\\"}\""
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Get All users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Create a product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function getRandomInt(min, max) {\r",
+							"    return Math.floor(Math.random() * (max - min + 1)) + min;\r",
+							"}\r",
+							"\r",
+							"function getRandomFloat(min, max) {\r",
+							"    return (Math.random() * (max - min) + min).toFixed(2);\r",
+							"}\r",
+							"\r",
+							"function getRandomProductName() {\r",
+							"    let products = [\"Laptop\", \"Mouse\", \"keyboard\", \"Smartphone\", \"Headset\", \"Printer\"];\r",
+							"    let brand = [\"Brand A\", \"Brand D\", \"Brand E\", \"Brand F\", \"Brand C\"];\r",
+							"    return `${brand[getRandomInt(0, brand.length - 1)]} ${products[getRandomInt(0, products.length - 1)]}`;\r",
+							"}\r",
+							"\r",
+							"function getRandomDescription() {\r",
+							"    let adjectives = [\"Excelent\", \"New\", \"Strong\", \"Compact\", \"Durable\", \"Economic\", \"Mordern\", \"Vintage\"];\r",
+							"    let features = [\"with high resolution\", \"optimized designt\", \"and top of the edge\", \"with long duration battery\"];\r",
+							"    return `${adjectives[getRandomInt(0, adjectives.length - 1)]} product ${features[getRandomInt(0, features.length - 1)]}.`;\r",
+							"}\r",
+							"\r",
+							"let requestBody = {\r",
+							"    \"name\": getRandomProductName(),\r",
+							"    \"price\": parseFloat(getRandomFloat(50, 5000)),  \r",
+							"    \"stock\": getRandomInt(1, 1), \r",
+							"    \"description\": getRandomDescription()\r",
+							"};\r",
+							"\r",
+							"pm.variables.set(\"randomProductRequestBody\", JSON.stringify(requestBody));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{randomProductRequestBody}}\n",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/products/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				},
+				"description": "Create a product"
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Get all products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/products/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				},
+				"description": "Get all products"
+			},
+			"response": []
+		},
+		{
+			"name": "5 - Create a transaction with a valid data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(pm.variables.get(\"baseUrl\") + \"/users\", function (err, response) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error:\", err);\r",
+							"    } else {\r",
+							"        let resp_json = response.json(); \r",
+							"        \r",
+							"        if (Array.isArray(resp_json) && resp_json.length > 0) {\r",
+							"            let randomIndex = Math.floor(Math.random() * resp_json.length); \r",
+							"            let user_id = resp_json[randomIndex].id; \r",
+							"            \r",
+							"            pm.variables.set(\"random_valid_user_id\", user_id); \r",
+							"        } else {\r",
+							"            console.log(\"Error.\");\r",
+							"        }\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.sendRequest(pm.variables.get(\"baseUrl\") + \"/products\", function (err, response) {\r",
+							"    if (err) {\r",
+							"        console.log(\"Error:\", err);\r",
+							"    } else {\r",
+							"        let resp_json = response.json(); \r",
+							"        \r",
+							"        if (Array.isArray(resp_json) && resp_json.length > 0) {\r",
+							"            let randomIndex = Math.floor(Math.random() * resp_json.length); \r",
+							"            let product_id = resp_json[randomIndex].id; \r",
+							"            \r",
+							"            pm.variables.set(\"random_valid_product_id\", product_id); \r",
+							"        } else {\r",
+							"            console.log(\"Error.\");\r",
+							"        }\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"function getRandomInt(min, max) {\r",
+							"    return Math.floor(Math.random() * (max - min + 1)) + min;\r",
+							"}\r",
+							"\r",
+							"function getRandomFloat(min, max) {\r",
+							"    return (Math.random() * (max - min) + min).toFixed(2);\r",
+							"}\r",
+							"\r",
+							"pm.variables.set(\"product_quantity\",getRandomInt(1, 10));\r",
+							"pm.variables.set(\"product_total\", parseFloat(getRandomFloat(50, 5000)));\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": {{random_valid_user_id}},\n    \"product_id\": {{random_valid_product_id}},\n    \"quantity\": {{product_quantity}},\n    \"status_id\": 1\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/transaction",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const randomEmail = `user_${Math.floor(Math.random() * 10000)}@email.com`;\r",
+					"const randomName = `TesteName${Math.floor(Math.random() * 1000)} LastName${Math.floor(Math.random() * 1000)} `;\r",
+					"const randomDocument = `${Math.floor(10000000000 + Math.random() * 90000000000)}`;\r",
+					"\r",
+					"pm.collectionVariables.set(\"email\", randomEmail);\r",
+					"pm.collectionVariables.set(\"name\", randomName);\r",
+					"pm.collectionVariables.set(\"document\", randomDocument);\r",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "last_user_id",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "document",
+			"value": ""
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "last_product_id",
+			"value": ""
+		}
+	]
+}
