@@ -1,0 +1,8 @@
+version: '3'
+services:
+  k6-soap:
+    image: grafana/k6:latest
+    volumes:
+      - ./scripts:/scripts
+      - ./results:/results
+    command: run /scripts/soap_test.js --out html=/results/report.html
