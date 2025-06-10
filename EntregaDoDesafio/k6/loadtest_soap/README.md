@@ -18,8 +18,8 @@ O exemplo usa o serviço TempConvert da W3Schools para converter Celsius para Fa
 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/soap-load-test.git
-cd soap-load-test
+git clone do repositorio principal
+cd k6/loadtest_soap
 ```
 
 2. Compile o k6 com o módulo SOAP

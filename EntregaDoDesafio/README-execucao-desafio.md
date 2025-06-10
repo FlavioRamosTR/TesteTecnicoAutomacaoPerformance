@@ -99,11 +99,3 @@ Você pode adaptar os scripts para os outros cenários (performance/resiliência
 | 🚀 Escalabilidade | Proposta para 100k acessos simultâneos | 🟡 Em Desenvolvimento | Documento técnico em revisão                            |
 | 🐳 Infraestrutura | Dockerizar solução                     | ✅ Entregue parcial   | Ambiente local com containers básicos                   |
 | 🔁 CI/CD          | GitHub Actions                        | 🟡 Em Desenvolvimento | Pipeline em estruturação                                |
-
----
-
-Para dúvidas, melhorias ou sugestões, abra uma issue ou pull request.
-
----
-
-🧠 **Dica final:** Utilize os dashboards em tempo real do Kibana para ilustrar gargalos e insights dos testes durante a entrega. Boa sorte! 🎯
